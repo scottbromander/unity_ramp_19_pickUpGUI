@@ -3,21 +3,18 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class PlayerInventoryDisplay : MonoBehaviour {
-	public Text starText;
+	public Image[] starPlaceHolders;
 
-	public void OnChangeCarryingStar(bool carryingStar){
-		string starMessage = "No star :(";
-		if(carryingStar) starMessage = "Carrying Star :)";
-		starText.text = starMessage;
-	}
+	public Sprite iconStarYellow;
+	public Sprite iconStarGrey;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	public void OnChangeCarryingStar(int starTotal){
+		for(int i = 0; i < starPlaceHolders.Length; i++){
+			if (i < starTotal) {
+				starPlaceHolders [i].sprite = iconStarYellow;
+			} else {
+				starPlaceHolders [i].sprite = iconStarGrey;
+			}
+		}
 	}
 }
